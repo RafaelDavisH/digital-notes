@@ -1,35 +1,48 @@
 {
   "main": {
-    "id": "d01d827062b05007",
+    "id": "c50e2896edc616e2",
     "type": "split",
     "children": [
       {
-        "id": "558ddd0d5436549c",
+        "id": "911d70cb33014060",
         "type": "tabs",
         "children": [
           {
-            "id": "e3335ff277b0ee04",
+            "id": "00010fff30b94da4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/_index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "2079097239b22f01",
             "type": "leaf",
             "state": {
               "type": "empty",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "42e93542dce3252c",
+    "id": "29311e2aa7aff40e",
     "type": "split",
     "children": [
       {
-        "id": "011b65f3aba4d5ae",
+        "id": "8c10a6f9fe470980",
         "type": "tabs",
         "children": [
           {
-            "id": "8612254ff5f997a4",
+            "id": "6d5c43a379e7c3c1",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -39,7 +52,7 @@
             }
           },
           {
-            "id": "4f1c16e1cc6b7e0c",
+            "id": "afdb6dcf023efa80",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -54,7 +67,7 @@
             }
           },
           {
-            "id": "05221e232f69fb9e",
+            "id": "c9557dad777ac664",
             "type": "leaf",
             "state": {
               "type": "starred",
@@ -68,15 +81,15 @@
     "width": 300
   },
   "right": {
-    "id": "6aec8e68f37654e9",
+    "id": "6a738a8b0928e2fc",
     "type": "split",
     "children": [
       {
-        "id": "a26394e793488a79",
+        "id": "c070eb72123bdcb7",
         "type": "tabs",
         "children": [
           {
-            "id": "77e674efde2d0d71",
+            "id": "630388211513cf4c",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -92,7 +105,7 @@
             }
           },
           {
-            "id": "357fa1f5a6430a82",
+            "id": "bc9e618d8c52fec9",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -103,7 +116,7 @@
             }
           },
           {
-            "id": "903f084ed9fab987",
+            "id": "d4e429896e5114d4",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -114,7 +127,7 @@
             }
           },
           {
-            "id": "f3f65a63221a6e95",
+            "id": "f18418148b0e7798",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -128,12 +141,13 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "e3335ff277b0ee04",
+  "active": "2079097239b22f01",
   "lastOpenFiles": [
-    "screenshot.png",
+    "notes/Testing.md",
+    "content/_index.md",
     "README.md",
-    "CODE_OF_CONDUCT.md",
-    "content/private/private-note.md",
-    "content/notes/primer-portafolio.md"
+    "content/notes/Testing this one more time.md",
+    "content/notes/Where does this go.md",
+    "content/templates/post.md"
   ]
 }

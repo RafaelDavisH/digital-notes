@@ -1,8 +1,8 @@
 name: Rafael D Hernandez
 enableToc: true
 enableLinkPreview: true
-description: This is my evergreen notes.
-page_title: "🪴 Rdh Digital Notes"
+description: My evergreen notes.
+page_title: "🪴 Rafa's Digital Notes"
 links:
   - link_name: Twitter
     link: https://twitter.com/rafaeldavish
@@ -12,5 +12,3 @@ links:
     link: https://posts.rafaeldavis.dev
   - link_name: Notes
     link: "/notes"
-  - link_name: Projects
-    link: https://rafaeldavis.dev/projects/

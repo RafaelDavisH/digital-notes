@@ -1,6 +1,5 @@
 baseURL = "https://rafaeldavis.dev/"
 languageCode = "en-us"
-googleAnalytics = ""
 relativeURLs = false
 disablePathToLower = true
 ignoreFiles = [
