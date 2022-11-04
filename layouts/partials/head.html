@@ -1,6 +1,6 @@
 <!-- set data/config yaml file based on website language -->
-{{ $config := cond (eq $.Site.Language.Lang "en") "config" (printf "config.%s" $.Site.Language.Lang) }}
-{{ $data := index $.Site.Data $config }}
+{{ $config := cond (eq $.Site.Language.Lang "en") "config" (printf "config.%s" $.Site.Language.Lang)
+}} {{ $data := index $.Site.Data $config }}
 <head>
   <!-- Meta tags -->
   <meta charset="UTF-8" />
@@ -9,75 +9,68 @@
     content="{{if .IsHome}}{{$data.description | default $.Site.Data.config.description}}{{else}}{{.Summary}}{{end}}"
   />
   <title>
-    {{ if .Title }}{{ .Title }}{{ else }}{{ $data.page_title | default $.Site.Data.config.page_title }}{{
-    end }}
+    {{ if .Title }}{{ .Title }}{{ else }}{{ $data.page_title | default $.Site.Data.config.page_title
+    }}{{ end }}
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- HTML Favicon -->
-  {{ $favicon := $data.favicon  | default $.Site.Data.config.favicon | default (slice (dict "rel" "shortcut icon" "type" "image/png" "href" "icon.png")) }}
-  {{ $type := (printf "%T" $favicon) }}
-  {{ if eq $type "string" }}
-  {{ $favicon | safeHTML }}
-  {{ else }}
-  {{ range $favicon }}
-  <link rel="{{.rel}}" {{if .type}}type="{{.type}}"{{end}} {{if .sizes}}sizes="{{.sizes}}"{{end}} href="{{$.Site.BaseURL}}/{{.href}}" />
-  {{- end }}
-  {{ end }}
+  {{ $favicon := $data.favicon | default $.Site.Data.config.favicon | default (slice (dict "rel"
+  "shortcut icon" "type" "image/png" "href" "icon.png")) }} {{ $type := (printf "%T" $favicon) }} {{
+  if eq $type "string" }} {{ $favicon | safeHTML }} {{ else }} {{ range $favicon }}
+  <link
+    rel="{{.rel}}"
+    {{if
+    .type}}type="{{.type}}"
+    {{end}}
+    {{if
+    .sizes}}sizes="{{.sizes}}"
+    {{end}}
+    href="{{$.Site.BaseURL}}/{{.href}}"
+  />
+  {{- end }} {{ end }}
 
   <!-- CSS Stylesheets and Fonts -->
-  {{$sass := resources.Match "styles/[!_]*.scss" }}
-  {{$css := slice }}
-  {{range $sass}}
-  {{$scss := . | resources.ToCSS (dict "outputStyle" "compressed") }}
-  {{$css = $css | append $scss}}
-  {{end}}
-  {{if $data.enableCallouts | default $.Site.Data.config.enableCallouts}}
-    {{$scss := resources.Get "styles/_callouts.scss" | resources.ToCSS (dict "outputStyle" "compressed") }}
-    {{$css = $css | append $scss}}
-  {{end}}
-  {{$finalCss := $css | resources.Concat "styles.css" | resources.Fingerprint "md5" | resources.Minify  }}
+  {{$sass := resources.Match "styles/[!_]*.scss" }} {{$css := slice }} {{range $sass}} {{$scss := .
+  | resources.ToCSS (dict "outputStyle" "compressed") }} {{$css = $css | append $scss}} {{end}} {{if
+  $data.enableCallouts | default $.Site.Data.config.enableCallouts}} {{$scss := resources.Get
+  "styles/_callouts.scss" | resources.ToCSS (dict "outputStyle" "compressed") }} {{$css = $css |
+  append $scss}} {{end}} {{$finalCss := $css | resources.Concat "styles.css" | resources.Fingerprint
+  "md5" | resources.Minify }}
   <link href="{{$finalCss.Permalink}}" rel="stylesheet" />
 
-  {{$lightSyntax := resources.Get "styles/_light_syntax.scss" | resources.ToCSS (dict "outputStyle" "compressed") | resources.Fingerprint "md5" | resources.Minify  }}
-  <link href="{{$lightSyntax.Permalink}}" rel="stylesheet" id="theme-link">
+  {{$lightSyntax := resources.Get "styles/_light_syntax.scss" | resources.ToCSS (dict "outputStyle"
+  "compressed") | resources.Fingerprint "md5" | resources.Minify }}
+  <link href="{{$lightSyntax.Permalink}}" rel="stylesheet" id="theme-link" />
 
-   <!-- Base scripts -->
-  {{$scripts := (slice "js/darkmode.js" "js/util.js")}}
-  {{range $scripts}}
-  {{$scriptname := .}}
-  {{ $s := resources.Get $scriptname | resources.ExecuteAsTemplate $scriptname . | resources.Fingerprint "md5" | resources.Minify }}
+  <!-- Base scripts -->
+  {{$scripts := (slice "js/darkmode.js" "js/util.js")}} {{range $scripts}} {{$scriptname := .}} {{
+  $s := resources.Get $scriptname | resources.ExecuteAsTemplate $scriptname . |
+  resources.Fingerprint "md5" | resources.Minify }}
   <script src="{{$s.Permalink}}"></script>
-  {{end}}
-  {{partial "katex.html" .}}
+  {{end}} {{partial "katex.html" .}}
 
   <script src="https://unpkg.com/@floating-ui/core@0.7.3"></script>
   <script src="https://unpkg.com/@floating-ui/dom@0.5.4"></script>
-  {{ $popover := resources.Get "js/popover.js" | resources.Fingerprint "md5" |
-  resources.Minify }}
+  {{ $popover := resources.Get "js/popover.js" | resources.Fingerprint "md5" | resources.Minify }}
   <script src="{{$popover.Permalink}}"></script>
 
   <!-- Optional scripts -->
-  {{ if $data.enableCodeBlockTitle | default $.Site.Data.config.enableCallouts }}
-  {{ $codeTitle := resources.Get "js/code-title.js" | resources.Fingerprint "md5" | resources.Minify }}
+  {{ if $data.enableCodeBlockTitle | default $.Site.Data.config.enableCallouts }} {{ $codeTitle :=
+  resources.Get "js/code-title.js" | resources.Fingerprint "md5" | resources.Minify }}
   <script src="{{$codeTitle.Permalink}}"></script>
-  {{end}}
-
-  {{ if $data.enableCodeBlockCopy | default $.Site.Data.config.enableCodeBlockCopy }}
-  {{ $clipboard := resources.Get "js/clipboard.js" | resources.Fingerprint "md5" | resources.Minify }}
+  {{end}} {{ if $data.enableCodeBlockCopy | default $.Site.Data.config.enableCodeBlockCopy }} {{
+  $clipboard := resources.Get "js/clipboard.js" | resources.Fingerprint "md5" | resources.Minify }}
   <script src="{{$clipboard.Permalink}}"></script>
-  {{ end }}
-
-  {{ if $data.enableCallouts | default $.Site.Data.config.enableCallouts }}
-  {{ $callouts := resources.Get "js/callouts.js" | resources.Fingerprint "md5" | resources.Minify }}
+  {{ end }} {{ if $data.enableCallouts | default $.Site.Data.config.enableCallouts }} {{ $callouts
+  := resources.Get "js/callouts.js" | resources.Fingerprint "md5" | resources.Minify }}
   <script src="{{$callouts.Permalink}}"></script>
   {{ end }}
 
   <!--  Preload page vars  -->
-  {{$linkIndex := resources.Get "indices/linkIndex.json" | resources.Fingerprint
-  "md5" | resources.Minify | }} {{$contentIndex := resources.Get
-  "indices/contentIndex.json" | resources.Fingerprint "md5" | resources.Minify
-  }}
+  {{$linkIndex := resources.Get "indices/linkIndex.json" | resources.Fingerprint "md5" |
+  resources.Minify | }} {{$contentIndex := resources.Get "indices/contentIndex.json" |
+  resources.Fingerprint "md5" | resources.Minify }}
   <script>
     const BASE_URL = {{.Site.BaseURL}}
     const fetchData = Promise.all([
@@ -168,9 +161,8 @@
       {{end}}
     };
   </script>
-  {{if $data.enableSPA | default $.Site.Data.config.enableSPA}}
-  {{ $router := resources.Get "js/router.js" | resources.Fingerprint "md5" |
-  resources.Minify }}
+  {{if $data.enableSPA | default $.Site.Data.config.enableSPA}} {{ $router := resources.Get
+  "js/router.js" | resources.Fingerprint "md5" | resources.Minify }}
   <script type="module">
     import { attachSPARouting } from "{{$router.Permalink}}"
     attachSPARouting(init, render)
