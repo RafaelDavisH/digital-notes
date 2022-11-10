@@ -1,6 +1,18 @@
 name: Rafael D Hernandez
 enableToc: true
+openToc: false
 enableLinkPreview: true
+enableLatex: true
+enableCodeBlockTitle: true
+enableCodeBlockCopy: true
+enableCallouts: true
+enableSPA: true
+enableFooter: true
+enableContextualBacklinks: true
+enableRecentNotes: true
+enableGitHubEdit: true
+GitHubLink: https://github.com/RafaelDavisH/digital-notes/tree/hugo/content
+enableSemanticSearch: false
 description: My evergreen notes.
 page_title: "🪴 Rafa's Digital Notes"
 links:
